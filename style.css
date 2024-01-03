@@ -1,0 +1,203 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+html {
+  background: rgb(255, 255, 255);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(146, 238, 146, 1) 100%
+  );
+  height: 100vh;
+}
+.main {
+  /* From https://css.glass */
+  background: #ce7079;
+  border-radius: 16px;
+  box-shadow: 0px 1px 10px 5px #0691e8;
+  backdrop-filter: blur(7.5px);
+  -webkit-backdrop-filter: blur(7.5px);
+  border: 1px solid rgba(210, 247, 191, 0.3);
+  width: 42vw;
+  height: 57vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  margin-top: 20vh;
+  position: relative;
+}
+.secondmain {
+  /* From https://css.glass */
+
+  width: 30vw;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.display {
+  background: #0ea1a3;
+  border-radius: 1px;
+  border: 1px solid rgba(241, 191, 247, 0.3);
+
+  /* Add the box-shadow property for a bottom shadow with the color #4e5fa8 */
+  box-shadow: 0 4px 3px #4e5fa8;
+}
+.desc {
+  /* From https://css.glass */
+  background: #fff8dc;
+  border-radius: 1px;
+  box-shadow: 0 4px 3px #7d007e;
+  backdrop-filter: blur(7.5px);
+  -webkit-backdrop-filter: blur(7.5px);
+  border: 1px solid rgba(241, 191, 247, 0.3);
+  /* width: 250px;
+  height: 70px; */
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.below {
+  width: 25vw;
+  height: 8vh;
+  margin-top: 7px;
+}
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 130px;
+}
+.btnn {
+  /* From https://css.glass */
+  background: #ffffff;
+
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.269);
+  backdrop-filter: blur(7.5px);
+  -webkit-backdrop-filter: blur(7.5px);
+  border: 1px solid rgba(241, 191, 247, 0.3);
+  margin-right: 6px;
+  width: 60px;
+  height: 60px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.btn :hover {
+  background: #dda0dd;
+
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.5px);
+  -webkit-backdrop-filter: blur(7.5px);
+  border: 1px solid rgba(241, 191, 247, 0.3);
+}
+.marks {
+  background: #84e084;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.5px);
+  -webkit-backdrop-filter: blur(7.5px);
+  border: 1px solid rgba(241, 191, 247, 0.3);
+  width: 100px;
+  height: 30px;
+  position: absolute;
+  top: 7px;
+  right: 10px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.start {
+  border: 2px solid black;
+  width: 80px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #8fee90;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.5px);
+  -webkit-backdrop-filter: blur(7.5px);
+  border: 1px solid rgba(196, 103, 207, 0.3);
+  margin-bottom: 3.5px;
+  cursor: pointer;
+}
+.popup {
+  border: 2px solid black;
+  width: 35vw;
+  height: 30vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: lightblue;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: larger;
+}
+.start:hover {
+  background: rgba(128, 179, 25, 0.324);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.5px);
+  -webkit-backdrop-filter: blur(7.5px);
+  border: 1px solid rgba(241, 191, 247, 0.3);
+  transform: scale(0.9);
+}
+.display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.timer {
+  position: absolute;
+
+  border: 2px solid black;
+  width: 80px;
+  height: 31.7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(128, 179, 25, 0.324);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.5px);
+  -webkit-backdrop-filter: blur(7.5px);
+  border: 1px solid rgba(241, 191, 247, 0.3);
+  bottom: 8px;
+  right: 8px;
+  margin-bottom: -4px;
+}
+.t {
+  height: 16vh;
+  width: 25vw;
+}
+.text_size {
+  font-size: 5vw;
+  margin-left: 100px;
+}
+.correct {
+  border: 2px solid black;
+  width: 200px;
+  height: 40px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #6da77e;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(176, 142, 223, 0.413);
+  backdrop-filter: blur(14.5px);
+  -webkit-backdrop-filter: blur(7.5px);
+  border: 1px solid rgba(190, 77, 203, 0.3);
+}

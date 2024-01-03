@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Quiz App</title>
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="marks" id="mark">Marks: </div>
+        <div class="correct" id="correct">Correct!</div>
+        <div class="secondmain">
+            <div class="display t">
+
+            </div>
+            <div class="desc below">
+                <p>Click the correct answer from the choices below </p>
+            </div>
+            <div class="btn t" id="btn">
+
+            </div>
+        </div>
+
+        <div class="start" onclick="startQuiz()">Start</div>
+        <div class="timer">Timer: <span class="timer-value">0s</span></div>
+        <div class="popup" id="peep">
+            Quiz is over! <br>
+            Marks:<span id="popups"></span>
+        </div>
+    </div>
+    <script src="javascript.js"></script>
+
+</body>
+
+</html>
