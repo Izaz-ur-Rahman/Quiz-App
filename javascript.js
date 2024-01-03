@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentQuestionIndex = 0;
   var marks = 0;
   let timer;
-  let isQuizStarted = false;
+  var isQuizStarted = false;
   let popup = false;
   // Event listener for Start Quiz button
   startButton.addEventListener("click", startQuiz);
@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function startQuiz() {
     if (isQuizStarted) {
+      isQuizStarted = !isQuizStarted;
       // If quiz is already started, reset the button text and clear the timer
       startButton.innerHTML = "Start";
       clearInterval(timer);
@@ -40,16 +41,17 @@ document.addEventListener("DOMContentLoaded", function () {
         btn.textContent = "";
       });
     } else {
+      isQuizStarted = !isQuizStarted;
       // If quiz is not started, update the button text, start the timer, and display numbers in the buttons
       startButton.innerHTML = "Reset";
       display();
+
       displaybtn();
       markspan.textContent = 0;
       startTimer();
     }
 
     // Toggle the quiz state
-    isQuizStarted = !isQuizStarted;
   }
 
   function createButtons() {
@@ -78,69 +80,75 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   function displaybtn() {
-    const buttons = document.querySelectorAll(".b");
+    if (isQuizStarted) {
+      const buttons = document.querySelectorAll(".b");
 
-    // Create an array with random numbers and the correct answer
-    let array = [
-      Math.floor(Math.random() * 100 + 1),
-      Math.floor(Math.random() * 100 + 1),
-      Math.floor(Math.random() * 100 + 1),
-      num3,
-    ];
+      // Create an array with random numbers and the correct answer
+      let array = [
+        Math.floor(Math.random() * 100 + 1),
+        Math.floor(Math.random() * 100 + 1),
+        Math.floor(Math.random() * 100 + 1),
+        num3,
+      ];
 
-    // Filter out duplicates and ensure all numbers are unique
-    array = Array.from(new Set(array));
+      // Filter out duplicates and ensure all numbers are unique
+      array = Array.from(new Set(array));
 
-    // If the array length is less than 4, add more random numbers
-    while (array.length < 4) {
-      const randomNumber = Math.floor(Math.random() * 100 + 1);
-      if (!array.includes(randomNumber)) {
-        array.push(randomNumber);
-      }
-    }
-
-    // Shuffle the array
-    array = shuffleArray(array);
-
-    // Pick a random index to replace with the correct answer
-    const correctIndex = Math.floor(Math.random() * buttons.length);
-    array[correctIndex] = num3;
-
-    markspan.textContent = "0";
-    var stringNumber;
-    addEventListener("click", () => {
-      stringNumber = num3.toString();
-    });
-    buttons.forEach((btn, index) => {
-      btn.textContent = array[index];
-      btn.addEventListener("click", () => {
-        // Update the display with a new question
-        correct.style.visibility = "visible";
-        display();
-        correct.innerHTML = "Incorrect";
-        correct.style.backgroundColor = "red";
-        if (btn.textContent === stringNumber) {
-          console.log(marks);
-          marks++;
-          markspan.textContent = marks;
-          marksDisplay.textContent = "Marks: " + marks;
-          correct.innerHTML = "Correct";
-          correct.style.backgroundColor = "green";
+      // If the array length is less than 4, add more random numbers
+      while (array.length < 4) {
+        const randomNumber = Math.floor(Math.random() * 100 + 1);
+        if (!array.includes(randomNumber)) {
+          array.push(randomNumber);
         }
+      }
 
-        // Reshuffle the array for the next set of buttons
-        array = shuffleArray(array);
+      // Shuffle the array
+      array = shuffleArray(array);
 
-        // Pick a new random index to replace with the correct answer
-        const newCorrectIndex = Math.floor(Math.random() * buttons.length);
-        array[newCorrectIndex] = num3;
+      // Pick a random index to replace with the correct answer
+      const correctIndex = Math.floor(Math.random() * buttons.length);
+      array[correctIndex] = num3;
 
-        buttons.forEach((btn, index) => {
-          btn.textContent = array[index];
+      var stringNumber;
+      addEventListener("click", () => {
+        stringNumber = num3.toString();
+      });
+      buttons.forEach((btn, index) => {
+        btn.textContent = array[index];
+        btn.addEventListener("click", () => {
+          // Update the display with a new question
+          {
+            correct.style.visibility = "visible";
+            display();
+
+            if (btn.textContent === stringNumber) {
+              console.log(marks);
+              marks++;
+              markspan.textContent = marks;
+              marksDisplay.textContent = "Marks: " + marks;
+              correct.innerHTML = "Correct";
+              correct.style.backgroundColor = "green";
+            }
+            if (btn.textContent !== stringNumber) {
+              correct.innerHTML = "Incorrect";
+              correct.style.backgroundColor = "red";
+            }
+
+            // Reshuffle the array for the next set of buttons
+            array = shuffleArray(array);
+
+            // Pick a new random index to replace with the correct answer
+            const newCorrectIndex = Math.floor(Math.random() * buttons.length);
+            array[newCorrectIndex] = num3;
+
+            buttons.forEach((btn, index) => {
+              btn.textContent = array[index];
+            });
+          }
         });
       });
-    });
-    marksDisplay.appendChild(markspan);
+      marksDisplay.appendChild(markspan);
+    }
   }
 
   // Function to shuffle an array using the Fisher-Yates algorithm
